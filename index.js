@@ -30,8 +30,9 @@ function clickHandle() {
 
 }
 
+// Playing with keyboard
 document.addEventListener("keydown", function(event) {
-    let pressedKey = event.key;
+    let pressedKey = event.key.toLowerCase();
 
     switch (pressedKey) {
         case "w":
@@ -59,15 +60,19 @@ document.addEventListener("keydown", function(event) {
             console.log(pressedKey);
             break;
     }
-    buttonAnimation(pressedKey);
+         buttonAnimation(pressedKey);
 
 })
 
 function buttonAnimation(currentKey) {
-    let activeButton = document.querySelector("." + currentKey);
-    activeButton.classList.add("pressed");
+    const keys = ["w","a","s","j","k","l"];
+    if(keys.includes(currentKey)){
+        let activeButton = document.querySelector("." + currentKey);
+        activeButton.classList.add("pressed");
 
-    setTimeout(function() {
-        activeButton.classList.remove("pressed");
-    }, 100)
+        setTimeout(function() {
+            activeButton.classList.remove("pressed");
+        }, 100)
+    }
+    
 }
